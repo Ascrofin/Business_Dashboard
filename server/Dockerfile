@@ -34,8 +34,9 @@ FROM base
 COPY --from=build /app /app
 
 # Start MongoDB server listening on both IPv4 and IPv6
-CMD ["mongod", "--bind_ip", "0.0.0.0", "--net.ipv6.bindv6only", "0"]
+#CMD ["mongod", "--bind_ip", "0.0.0.0", "--net.ipv6.bindv6only", "0"]
+#CMD ["mongod", "--bind_ip", "0.0.0.0"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD [ "node", "index.js" ]
+CMD [ "node", "index.js" ,"mongod", "--bind_ip", "0.0.0.0"]
