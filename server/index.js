@@ -24,6 +24,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+// Add this part here
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
 /* ROUTES */
 app.use("/kpi", kpiRoutes);
 app.use("/product", productRoutes);
@@ -36,8 +41,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(async () => {
-
-    app.listen(PORT, ()=> console.log(`Server Port: ${PORT}`))
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
     // await mongoose.connection.db.dropDatabase();
